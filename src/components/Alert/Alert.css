@@ -1,0 +1,21 @@
+#toast-container {
+    top: 3rem !important;
+}
+
+.alert-block {
+    animation: alertshow 300ms ease-in-out;
+}
+
+@keyframes alertshow {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.alert-info {
+    position: relative;
+    right: 10px;
+}
