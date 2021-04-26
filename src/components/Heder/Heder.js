@@ -7,8 +7,8 @@ const Heder = () => {
         <div className="nav-wrapper">
             <Link to="/shop/" className="brand-logo">Киномания</Link>
             <ul id="nav-mobile" className="right hide-on-med-and-down">
-                <li><Link to="/shop/">Сериалы</Link></li>
-                <li><Link to="/shop/">Фильмы</Link></li>
+                <li><Link to="/shop/">Товары</Link></li>
+                <li><Link to="/shop/">Акции</Link></li>
                 <li><Link to="/shop/">Контакты</Link></li>
             </ul>
         </div>
