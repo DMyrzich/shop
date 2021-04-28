@@ -9,13 +9,10 @@ const Alert = () => {
 
     useEffect(() => {
 
-        const timerId = setInterval(() => {
 
-            SetshowAlert('');
-        }, 900);
+        const timerId = setTimeout(SetshowAlert, 900);
 
-        return () => clearInterval(timerId);
-
+        return () => clearTimeout(timerId);
 
         // eslint-disable-next-line
     }, [showAlert]);

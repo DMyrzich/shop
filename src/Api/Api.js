@@ -1,50 +1,63 @@
-import { createContext, useState } from "react"
+import { createContext, useReducer } from "react"
+import { Reducer } from '../components/Reducer'
 
 export const MyContex = createContext()
 
-export const Api = (props) => {
+const inutialState = {
 
-    const [cardItem, SetcardItem] = useState([]);
-    const [showCard, SetshowCard] = useState(false);
-    const [showAlert, SetshowAlert] = useState('');
+    cardItem: [],
+    items: [],
+    showCard: false,
+    loading: true,
+    showAlert: '',
+}
+
+export const Api = ({ children }) => {
+
+    const [{ cardItem, items, showCard, loading, showAlert, infoRobot }, dispatch] = useReducer(Reducer, inutialState);
 
     const addCard = (item) => {
 
-        const cardIdx = cardItem.findIndex((el) => el.id === item.id);
-        SetshowAlert(item.name);
-        if (cardIdx < 0) {
-
-            return SetcardItem([...cardItem, { ...item, count: 1 }]);
-        }
-        const it = cardItem.find((el) => el.id === item.id);
-        SetcardItem([...cardItem.slice(0, cardIdx), { ...it, count: it.count + 1 }, ...cardItem.slice(cardIdx + 1)]);
+        dispatch({ type: 'addCard', peyload: item });
     }
 
     const edtiCard = (item, value) => {
 
-        const cardIdx = cardItem.findIndex((el) => el.id === item.id);
-        if (item.count + value <= 0) {
+        dispatch({ type: 'edtiCard', peyload: { item, value } });
+    }
 
-            return SetcardItem(cardItem.filter(el => el.id !== item.id));
-        }
-        const it = cardItem.find((el) => el.id === item.id);
-        SetcardItem([...cardItem.slice(0, cardIdx), { ...it, count: it.count + value }, ...cardItem.slice(cardIdx + 1)]);
+    const SetshowAlert = () => {
+
+        dispatch({ type: 'SetshowAlert' });
+    }
+
+    const SetshowCard = () => {
+
+        dispatch({ type: 'SetshowCard' });
+    }
+
+    const setItems = (data) => {
+
+        dispatch({ type: 'setItems', peyload: data });
     }
 
     const value = {
-
         cardItem,
-        showAlert,
+        items,
         showCard,
-        addCard,
-        edtiCard,
+        loading,
+        showAlert,
+        infoRobot,
+        setItems,
         SetshowCard,
         SetshowAlert,
+        edtiCard,
+        addCard,
     }
 
     return <MyContex.Provider value={value}>
         {
-            props.children
+            children
         }
     </MyContex.Provider>
 

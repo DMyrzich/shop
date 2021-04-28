@@ -1,6 +1,5 @@
 .cart {
     position: fixed;
-    bottom: 1rem;
     right: 1rem;
     border-radius: 5px;
     cursor: pointer;
