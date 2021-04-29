@@ -21,7 +21,7 @@ const Alert = () => {
         <div id="toast-container">
             <div className="toast alert-block" style={{ borderRadius: 5 }}>
                 <i className="material-icons alert-info">info_outline</i>
-                {showAlert} успешно добавлен в корзину
+                {showAlert} успешно добавлен в корзину!
             </div>
         </div>
     )
